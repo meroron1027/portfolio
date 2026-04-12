@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works - なにやってもうまくいかない カバーMV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="work-detail-body preload">
+
+    <div class="work-detail-wrapper">
+        <!-- 左側コンテンツ -->
+        <div class="work-detail-left">
+            <!-- 拡大縮小トグル用ボタン -->
+            <div class="work-detail-toggle"></div>
+
+            <!-- 幾何学的な装飾 -->
+            <div class="work-detail-decor"></div>
+
+            <div class="work-detail-content">
+                <p class="work-category">VFX / MV</p>
+                <h1 class="work-detail-title">なにやってもうまくいかない<br>カバーMV</h1>
+
+                <div class="work-detail-info">
+                    <p><strong>Role</strong> Creator</p>
+                    <p><strong>Date</strong> 2025</p>
+                    <p><strong>Tools</strong> Undefined</p>
+                    <p class="work-detail-desc">
+                        ゲーム映像にリリックモーションを合成したMVです。
+                    </p>
+                </div>
+
+                <div class="work-detail-actions">
+                    <a href="index.html#works" class="btn-back">← Back to Works</a>
+                    <a href="#" target="_blank" class="btn-primary">View
+                        Project</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側ビジュアル -->
+        <div class="work-detail-right">
+            <video src="img/work9.mp4" autoplay loop muted playsinline></video>
+        </div>
+    </div>
+
+    <script>
+        // ====== Portfolio Detail PC Expansion ======
+        const workDetailBody = document.querySelector('.work-detail-body');
+        if (workDetailBody) {
+            const detailRight = document.querySelector('.work-detail-right');
+            const toggleBtn = document.querySelector('.work-detail-toggle');
+
+            function toggleExpand() {
+                if (window.innerWidth >= 769) { // PC版のみ動作
+                    workDetailBody.classList.toggle('is-expanded');
+                }
+            }
+
+            if (detailRight) {
+                detailRight.addEventListener('click', toggleExpand);
+            }
+            if (toggleBtn) {
+                // ボタンのクリックイベント（バブリングを防ぐ）
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleExpand();
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

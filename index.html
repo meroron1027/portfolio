@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Site</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+
+<body class="preload">
+
+    <header class="site-header">
+
+        <img src="img/logo.png" alt="Logo" class="logo">
+
+        <nav class="global-nav">
+            <ul>
+                <li><a href="#">TOP</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">WORKS</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div id="btn" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </header>
+
+    <main class="main-visual">
+
+        <video src="img/video.mp4" autoplay loop muted playsinline></video>
+    </main>
+
+    <section id="about" class="about">
+        <div class="about-title-wrapper js-observer fadein-left">
+            <h2 class="about-title">RYUYA TAKADA</h2>
+        </div>
+        <div class="about-block1">
+            <div class="canvas-wrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+        <div class="about-block2">
+            <div class="about-content">
+                <div class="profile">
+                    <p class="profile-name">高田龍弥/TAKADA RYUYA</p>
+                    <p class="profile-exp">倉敷芸術科学大学 メディア映像学科 2027年3月卒業予定<br>
+
+                    </p>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-question">Q. 制作における「譲れない軸」は？</p>
+                    <div class="qa-answer-wrapper">
+                        <div class="qa-answer">
+                            <p class="qa-answer-title">A. 受け手の視点に立つことです。</p>
+                            <p class="qa-answer-text">
+                                「自分が何を表現したいか」よりも、「何が一番喜ばれるか」を大切にしています。クライアントさんの言葉の奥にある想いを探り、使う人の心にスッと届く形にする。そのパズルがピタッとはまったときが、この仕事をしていて一番嬉しい瞬間です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-question">Q. デザイン/映像以外に「武器」はある？</p>
+                    <div class="qa-answer-wrapper">
+                        <div class="qa-answer">
+                            <p class="qa-answer-title">A. 韻に乗せて思いを伝える「ラップ」のスキルです。</p>
+                            <p class="qa-answer-text">
+                                過去には録音バトル大会での優勝経験もあり、10曲以上の制作に携わりました。限られた小節数に想いを凝縮する構成力と、心地よいリズム感は、現在のWebデザインや映像制作のタイムライン編集にも活きています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-question">Q. 今プライベートで熱中していることは？</p>
+                    <div class="qa-answer-wrapper">
+                        <div class="qa-answer">
+                            <p class="qa-answer-title">A. ゲーム機を「ゼロから」作ることです。</p>
+                            <p class="qa-answer-text">
+                                レトロゲームの面白さを再確認したのがきっかけで、ハードウェアから自作することに挑戦中です。仕組みを根底から理解し、現代の技術でどう面白くリメイクできるか。そんなエンジニアリングに近い試行錯誤を楽しんでいます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-question">Q. これからどんな作品を作っていきたい？</p>
+                    <div class="qa-answer-wrapper">
+                        <div class="qa-answer">
+                            <p class="qa-answer-title">A. 誰かの「肩の力が抜ける」ようなコンテンツです。</p>
+                            <p class="qa-answer-text">
+                                情報過多で気の休まらない現代だからこそ、私の作ったWebサイトや映像を見た人が、ふと息をつけるような。そんな「体温」のあるクリエイティブを、技術の力で生み出すのが私のミッションです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="spacer"></div>
+    <section id="works" class="works">
+        <div class="works-title-wrapper js-observer fadein-left">
+            <h2 class="works-title">WORKS</h2>
+        </div>
+
+        <!-- 1段目: 大作例（2つ横並び） -->
+        <div class="works-row">
+            <!-- 作品1 -->
+            <a href="work1.html" class="work-item" style="text-decoration: none; color: inherit; display: block;">
+                <div class="work-thumbnail">
+                    <img src="img/work1.png" alt="Work 1">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">Web Design / Direction</p>
+                    <h3 class="work-title">倉敷芸術科学大学 卒制展サイト</h3>
+                    <p class="work-desc">
+                        卒業制作展インタビューサイトのプロジェクトリーダーを担当しました。学生30人の先頭に立ち、スケジュール管理やデザインのディレクション、インタビュー記事の編集を行いました。
+                    </p>
+                    <div class="work-date">2026.01</div>
+                </div>
+            </a>
+
+            <!-- 作品2 -->
+            <a href="work2.html" style="text-decoration: none; color: inherit; display: block;" class="work-item">
+                <div class="work-thumbnail">
+                    <img src="img/work2.png" alt="Work 2">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">Rap / Music Video</p>
+                    <h3 class="work-title">ラップカバー楽曲制作</h3>
+                    <p class="work-desc">nobodyknows+氏の楽曲ココロオドルのインストに、自作のラップを乗せてカバーしました。また、MVも制作しました。
+                    </p>
+                    <div class="work-date">2026.02</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2段目: 小作例（3つ横並び） -->
+        <div class="works-row">
+            <!-- 作品3 (小) -->
+            <a href="work3.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work3.png" alt="Work 3">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV</p>
+                    <h3 class="work-title">CHOCOLATE BOX カバーMV</h3>
+                    <p class="work-desc">苦手意識のある可愛い系のMVに挑戦しました。可愛く見せるレイアウトや、リリックのタイミングにこだわりました。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品4 (小) -->
+            <a href="work4.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work4.png" alt="Work 4">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV / Graffiti</p>
+                    <h3 class="work-title">The Skilled ラップカバー制作</h3>
+                    <p class="work-desc">餓鬼レンジャー氏の楽曲The
+                        Skilledに、自作のラップを乗せてカバーしました。MV、グラフィティアート、各キャラのロゴマークも制作し統一感のある画作りを目指しました。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品5 (小) -->
+            <a href="work5.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work5.png" alt="Work 5">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">Web App</p>
+                    <h3 class="work-title">フリップ大喜利サイト</h3>
+                    <p class="work-desc">お題に対してフリップで回答する大喜利を、Web上で楽しめるようにしたアプリケーションです。直感的な操作と、回答がめくれるアニメーションが特徴です。</p>
+
+                </div>
+            </a>
+        </div>
+
+        <!-- 3段目: 小作例（3つ横並び） -->
+        <div class="works-row">
+            <!-- 作品6 (小) -->
+            <a href="work6.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work6.png" alt="Work 6">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV / Rap</p>
+                    <h3 class="work-title">The Gift ラップカバー制作</h3>
+                    <p class="work-desc">Ginryu氏の楽曲The
+                        Giftに、自作のラップを乗せてカバーしました。6人のMCのリリックを深い意味まで汲み取り、分かりやすく伝わるMVづくりを心掛けました。
+                    </p>
+
+                </div>
+            </a>
+
+            <!-- 作品7 (小) -->
+            <a href="work7.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work7.png" alt="Work 7">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">Card Game</p>
+                    <h3 class="work-title">カードゲーム「毒盛御膳」</h3>
+                    <p class="work-desc">騙し合いをテーマにしたカードゲームをグループで作りました。私はルールデザイン、カード表面デザイン、カードイラスト(筑前煮、団子、おにぎり)を担当しました。
+                    </p>
+
+                </div>
+            </a>
+
+            <!-- 作品8 (小) -->
+            <a href="work8.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work8.png" alt="Work 8">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV</p>
+                    <h3 class="work-title">ルシファー カバーMV</h3>
+                    <p class="work-desc">¿?氏の楽曲ルシファーのMVを制作しました。タイトルロゴ、背景も手描きし、キャラクターイラストとの馴染み方を工夫しました。
+                    </p>
+
+                </div>
+            </a>
+        </div>
+
+        <!-- 4段目: 小作例（3つ横並び） -->
+        <div class="works-row">
+            <!-- 作品9 (小) -->
+            <a href="work9.html" style="text-decoration: none; color: inherit; display: block;" class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work9.png" alt="Work 9">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">VFX / MV</p>
+                    <h3 class="work-title">なにやってもうまくいかない<br>カバーMV</h3>
+                    <p class="work-desc">ゲーム映像にリリックモーションを合成したMVです。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品10 (小) -->
+            <a href="work10.html" style="text-decoration: none; color: inherit; display: block;"
+                class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work10.png" alt="Work 10">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV</p>
+                    <h3 class="work-title">ロキ カバーMV</h3>
+                    <p class="work-desc">みきとP氏の楽曲ロキのカバーMVを制作しました。描いてもらったイラストに合わせ、背景イラストも制作しました。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品11 (小) -->
+            <a href="work11.html" style="text-decoration: none; color: inherit; display: block;"
+                class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work11.png" alt="Work 11">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">Package Design</p>
+                    <h3 class="work-title">太陽のグミ パッケージデザイン</h3>
+                    <p class="work-desc">ゼミ活動の一環として、岡山県産のフルーツを使ったグミのパッケージデザインをしました。落選はしたものの、コンペに応募し、貴重な経験になりました。</p>
+
+                </div>
+            </a>
+        </div>
+
+        <!-- 5段目: 小作例（3つ横並び） -->
+        <div class="works-row">
+            <!-- 作品12 (小) -->
+            <a href="work12.html" style="text-decoration: none; color: inherit; display: block;"
+                class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work12.png" alt="Work 12">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV</p>
+                    <h3 class="work-title">カバーMV制作</h3>
+                    <p class="work-desc">フロクロ氏の楽曲ことばのおばけがまどからみているのカバーMVを制作しました。原作の雰囲気を残しつつ、後半に向けて盛り上がっていく構成を意識しました。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品13 (小) -->
+            <a href="work13.html" style="text-decoration: none; color: inherit; display: block;"
+                class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work13.png" alt="Work 13">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">MV</p>
+                    <h3 class="work-title">超BAD Feeling man MV</h3>
+                    <p class="work-desc">淡馬座初後氏のオリジナル楽曲超BAD Feeling
+                        manのMVを制作しました。「リリック主体で作ってほしい」という要望の通りに、歌詞の意味を伝えられるように構成しました。</p>
+
+                </div>
+            </a>
+
+            <!-- 作品14 (小) -->
+            <a href="work14.html" style="text-decoration: none; color: inherit; display: block;"
+                class="work-item small">
+                <div class="work-thumbnail">
+                    <img src="img/work14.png" alt="Work 14">
+                </div>
+                <div class="work-info">
+                    <p class="work-category">RAP</p>
+                    <h3 class="work-title">3VLAZE BATTLE</h3>
+                    <p class="work-desc">3対3の録音形式のラップバトルイベントに参加しました。動画は順次投稿されていきます。</p>
+
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- セクション間の余白 -->
+    <div class="spacer"></div>
+
+    <!-- コンタクト＆フッター -->
+    <footer id="contact" class="site-footer">
+        <div class="contact-title-wrapper js-observer fadein-left">
+            <h2 class="contact-title">CONTACT</h2>
+        </div>
+
+        <div class="footer-content">
+            <div class="contact-info">
+                <p>お問い合わせや制作のご相談は、メールよりお気軽にご連絡ください。</p>
+                <a href="mailto:meroron1027@gmail.com" class="contact-email">meroron1027@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 TAKADA RYUYA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <canvas id="glitch-cursor"></canvas>
+</body>
+
+</html>
