@@ -61,7 +61,7 @@ if (container) {
     // Get initial size safely if container size isn't computed yet
     const initWidth = container.clientWidth || 300;
     const initHeight = container.clientHeight || 300;
-    renderer.setSize(initWidth, initHeight);
+    renderer.setSize(initWidth, initHeight, false); // 第3引数にfalseを渡し、Three.jsによる強制的なstyle指定を防ぐ
     renderer.setPixelRatio(window.devicePixelRatio);
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -129,7 +129,7 @@ if (container) {
         if (container && container.clientWidth > 0 && container.clientHeight > 0) {
             camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setSize(container.clientWidth, container.clientHeight, false); // ここもfalseを設定
         }
     });
 }

@@ -226,15 +226,14 @@ body {
   box-sizing: border-box;
   border: 2px solid #FFFFFF;
   display: block;
-  overflow: hidden;
+  /* overflow: hidden; Braveでのクリッピングバグを回避するため削除 */
 }
 
 .canvas-wrapper {
   width: 100%;
   aspect-ratio: 8 / 9;
-  /* 絶対に元の比率を保つ */
   position: relative;
-  /* キャンバスを絶対配置するための基準にする */
+  transform: translateZ(0);
 }
 
 #canvas {
@@ -242,7 +241,6 @@ body {
   height: 100%;
   display: block;
   position: absolute;
-  /* キャンバス自体の実寸大が親の縮小を邪魔しないようにする */
   top: 0;
   left: 0;
 }
@@ -307,12 +305,14 @@ body {
   color: #FFFF7D;
 }
 
-/* 答えのラッパー（通常時は高さを0にして隠す） */
-/* モダンなCSS Gridを使った高さアニメーション手法 */
+
 .qa-answer-wrapper {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.4s ease-out;
+  box-sizing: border-box;
+  width: 95%;
+  margin-left: 5%;
 }
 
 /* ホバー時に高さを内容に合わせて広げる */
