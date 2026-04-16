@@ -1037,3 +1037,75 @@ body {
     display: none;
   }
 }
+
+
+/* ローディング画面 */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000021;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.content {
+  filter: blur(15px);
+  transform: scale(1.05);
+  transition: filter 1s ease 3s, transform 1s ease 3s;
+}
+
+.content.is-loaded {
+  filter: blur(0);
+}
+
+/* JavaScriptでこのクラスが付与されたら非表示にする */
+.loading-screen.hidden {
+  opacity: 0;
+  /* 透明にする */
+  pointer-events: none;
+  /* 透明になっても裏側のボタンなどを押せるようにする */
+}
+
+.rotare-view {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+
+}
+
+#rotate-container {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+
+#loading p {
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: 0.5vw;
+  z-index: 10;
+  margin: 0;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
