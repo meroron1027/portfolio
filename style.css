@@ -213,9 +213,7 @@ body {
 .about {
   width: 100%;
   min-height: 56.25vw;
-  /* 16:9 の比率を最低高さとして維持 */
   height: auto;
-  /* 中身が増えたら自動で伸びる */
   display: flex;
   background-color: #000021;
   position: relative;
@@ -226,7 +224,6 @@ body {
   box-sizing: border-box;
   border: 2px solid #FFFFFF;
   display: block;
-  /* overflow: hidden; Braveでのクリッピングバグを回避するため削除 */
 }
 
 .canvas-wrapper {
@@ -297,14 +294,41 @@ body {
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
+  cursor: pointer;
+  position: relative;
+  padding-right: 0.5em;
   transition: color 0.3s ease;
 }
 
-/* ホバー時に太字の色を少し変える */
-.qa-item:hover .qa-question {
-  color: #FFFF7D;
+.qa-question::after {
+  content: '▼';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  transition: transform 0.4s ease;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .qa-item:hover .qa-question {
+    color: #FFFF7D;
+  }
+
+  .qa-item:hover .qa-question::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .qa-item:hover .qa-answer-wrapper {
+    grid-template-rows: 1fr;
+  }
+
+  .qa-item:hover .qa-answer {
+    opacity: 1;
+    padding-top: 15px;
+  }
+
+}
 
 .qa-answer-wrapper {
   display: grid;
@@ -313,11 +337,6 @@ body {
   box-sizing: border-box;
   width: 95%;
   margin-left: 5%;
-}
-
-/* ホバー時に高さを内容に合わせて広げる */
-.qa-item:hover .qa-answer-wrapper {
-  grid-template-rows: 1fr;
 }
 
 /* アンサー全体 */
@@ -332,20 +351,12 @@ body {
   transition: opacity 0.3s ease-out, padding-top 0.3s ease-out;
 }
 
-/* ホバー時に不透明度と余白をつける */
-.qa-item:hover .qa-answer {
-  opacity: 1;
-  padding-top: 15px;
-}
-
 /* 展開される回答のタイトルとテキストの調整 */
 .qa-answer-title {
   margin: 0 0 10px 0;
-  /* 下に少し余白を開ける */
   font-size: 1.5rem;
   font-weight: bold;
   color: #FFFFFF;
-  /* タイトルは少し目立たせるため真っ白に */
 }
 
 .qa-answer-text {
@@ -376,6 +387,84 @@ body {
   width: 100%;
   pointer-events: none;
   z-index: 20;
+}
+
+/* =======================================
+   スマホ用設定（最初から全開にする）
+======================================= */
+@media (hover:none) {
+
+  .qa-question::after {
+    display: none;
+  }
+
+  .qa-answer-wrapper {
+    grid-template-rows: 1fr;
+  }
+
+  .qa-answer {
+    opacity: 1;
+    padding-top: 15px;
+  }
+
+  .qa-question {
+    font-size: 1.5rem;
+  }
+
+  .qa-answer-title {
+    font-size: 1.2rem;
+  }
+
+  .qa-answer-text {
+    font-size: 1rem;
+  }
+}
+
+/* =======================================
+   ABOUTエリア スマホ用設定 (固定背景＋テキストオーバーレイ)
+====================================== */
+@media screen and (max-width: 768px) {
+  .about {
+    display: block;
+    min-height: 100vh;
+  }
+
+  .about-block1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    border: none;
+  }
+
+  .canvas-wrapper {
+    position: sticky;
+    top: 60px;
+    /* ヘッダーの高さ */
+    width: 100%;
+    height: calc(100vh - 60px);
+    aspect-ratio: auto;
+  }
+
+  .about-block2 {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 33, 0.4);
+    /* 背景色を透過させて奥のモデルを見せる */
+    padding: 10vw 8vw;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    /* グラスモーフィズム調のすりガラス効果 */
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .about-content {
+    margin-top: 0;
+  }
 }
 
 /* 汎用フェードイン用のクラス（左から右への動き） */
@@ -452,23 +541,7 @@ body {
   cursor: pointer;
 }
 
-/* ホバー時にオーバーラップする半透明の白い四角 */
-.work-item::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.work-item:hover::after {
-  opacity: 1;
-}
+/* 半透明の白い四角アニメーションを廃止し、画像拡大アニメーションに変更 */
 
 .work-item.small {
   width: calc(100vw / 3);
@@ -477,6 +550,7 @@ body {
 
 .work-item.small .work-info {
   padding: 2.5vw;
+  padding-top: 1.2vw;
 }
 
 .work-item.small .work-title {
@@ -604,6 +678,13 @@ body {
   object-fit: cover;
   /* 画像の比率を保ちながら枠を埋める */
   display: block;
+  transition: transform 0.4s ease;
+  /* ホバー用のアニメーション速度 */
+}
+
+/* 親要素ホバー時にサムネイル画像を1.1倍に拡大（はみ出さないように中心から） */
+.work-item:hover .work-thumbnail img {
+  transform: scale(1.1);
 }
 
 .work-info {
@@ -1062,7 +1143,8 @@ body {
 }
 
 .content.is-loaded {
-  filter: blur(0);
+  filter: none;
+  transform: none;
 }
 
 /* JavaScriptでこのクラスが付与されたら非表示にする */
@@ -1108,4 +1190,86 @@ body {
   50% {
     opacity: 0.3;
   }
+}
+
+/* =======================================
+   スマホ用 大見出し(タイトル)サイズ拡大設定
+====================================== */
+@media screen and (max-width: 768px) {
+
+  .works-title,
+  .contact-title {
+    font-size: 18vw;
+  }
+
+  .about-title {
+    font-size: 14vw;
+  }
+}
+
+/* =======================================
+   作品アイテム 背景色設定
+====================================== */
+/* スマホ版（画面幅768px以下）: 要素の1カラム化、背景色、余白の調整 */
+@media screen and (max-width: 768px) {
+
+  /* 作品の列を縦並び(1カラム)に変更し、中央寄せ */
+  .works-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 大アイテムは横幅100%に対して正方形（1:1）を維持する */
+  .work-item {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* 小アイテムは横幅80%に対して正方形（1:1）を維持する */
+  .work-item.small {
+    width: 80vw;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* 小アイテム群の先頭（3段目）のみ、上に20%（画面幅基準）の余白を設ける */
+  .works .works-row:nth-child(3) {
+    padding-top: 20vw;
+  }
+
+  /* 作品3〜14（小サイズ全部）の背景色設定 */
+  .work-item.small {
+    background-color: #212140;
+  }
+
+  /* テキスト・内側余白の崩れを防止し、スマホ用に統一した読みやすいサイズ(rem)に変更 */
+  .work-info,
+  .work-item.small .work-info {
+    padding: 6vw 8vw;
+  }
+
+  .work-category {
+    font-size: 1rem;
+    margin-bottom: 3vw;
+  }
+
+  .work-title,
+  .work-item.small .work-title {
+    font-size: 1.4rem;
+    margin-bottom: 3vw;
+  }
+
+  .work-desc {
+    font-size: 1rem;
+    margin-bottom: 5vw;
+  }
+
+  .work-date {
+    font-size: 0.9rem;
+  }
+}
+
+.work-item.small.bg-alt {
+  background-color: #212140;
 }
