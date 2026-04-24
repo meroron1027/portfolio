@@ -76,6 +76,10 @@ window.addEventListener('load', () => {
     animate();
     mainContent.classList.add('is-loaded');
 
+    // レイアウト確定後にアスペクト比を再計算させるため、強制的にresizeイベントを発火
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 100);
 });
 
 
@@ -108,7 +112,11 @@ const container = document.querySelector('.canvas-wrapper');
 if (container) {
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    // Get initial size safely if container size isn't computed yet
+    const initWidth = container.clientWidth || 300;
+    const initHeight = container.clientHeight || 300;
+    
+    const camera = new THREE.PerspectiveCamera(75, initWidth / initHeight, 0.1, 1000);
     camera.position.z = 6.2;
 
     const renderer = new THREE.WebGLRenderer({
@@ -116,9 +124,7 @@ if (container) {
         antialias: true, // ギザギザを抑える
         alpha: true      // 背景を透明にできる
     });
-    // Get initial size safely if container size isn't computed yet
-    const initWidth = container.clientWidth || 300;
-    const initHeight = container.clientHeight || 300;
+    
     renderer.setSize(initWidth, initHeight, false); // 第3引数にfalseを渡し、Three.jsによる強制的なstyle指定を防ぐ
     renderer.setPixelRatio(window.devicePixelRatio);
 

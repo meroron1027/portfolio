@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+
 .preload * {
   transition: none !important;
   animation: none !important;
@@ -7,6 +9,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
 /* ヘッダー全体のスタイル */
@@ -49,7 +52,7 @@ body {
   text-decoration: none;
   color: #FFFFFF;
   /* 背景が濃紺なので文字は白に */
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-weight: 700;
   /* Bold */
   font-size: 24pt;
@@ -285,8 +288,8 @@ body {
   color: #FFFFFF;
   cursor: pointer;
   width: 100%;
-  margin-top: 4vw;
-  margin-bottom: 4vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
 }
 
 /* 太字（ホバーする対象） */
@@ -365,7 +368,7 @@ body {
 }
 
 .about-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 12vw;
   color: #FFFFFF;
   text-align: left;
@@ -503,7 +506,7 @@ body {
 }
 
 .works-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 12vw;
   color: #FFFFFF;
   text-align: left;
@@ -573,7 +576,7 @@ body {
 }
 
 .contact-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 12vw;
   color: #FFFFFF;
   text-align: left;
@@ -612,18 +615,23 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.contact-email {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: #FFFF7D;
+.contact-btn {
+  display: inline-block;
+  background-color: #FFFF7D;
+  color: #000021;
+  padding: clamp(1rem, 3vw, 1.5rem) clamp(2rem, 6vw, 4rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: bold;
   text-decoration: none;
-  display: block;
+  transition: all 0.3s ease;
   margin-bottom: 4rem;
-  transition: color 0.3s;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 
-.contact-email:hover {
-  color: #FFFFFF;
+.contact-btn:hover {
+  background-color: #FFFFFF;
+  color: #000021;
+  transform: scale(1.05);
 }
 
 .sns-links {
@@ -638,7 +646,7 @@ body {
 .sns-links a {
   color: #FFFFFF;
   text-decoration: none;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 1.5rem;
   transition: color 0.3s;
 }
@@ -656,7 +664,7 @@ body {
 .copyright {
   margin: 0;
   color: rgba(255, 255, 255, 0.5);
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 1rem;
 }
 
@@ -691,25 +699,25 @@ body {
   flex-grow: 1;
   /* 正方形の余ったスペースをすべて埋める */
   padding: 3vw;
+  padding-top: 1vw;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* 情報を上下中央に配置 */
+  justify-content: flex-start;
 }
 
 .work-category {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 1.2vw;
   color: #FFFF7D;
-  margin: 0 0 1vw 0;
+  margin: 0 0 0.6vw 0;
   letter-spacing: 0.1em;
 }
 
 .work-title {
   font-size: 2.5vw;
   font-weight: bold;
-  margin: 0 0 1vw 0;
+  margin: 0 0 0.6vw 0;
 }
 
 .work-desc {
@@ -720,7 +728,7 @@ body {
 }
 
 .work-date {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 1vw;
   color: rgba(255, 255, 255, 0.5);
   margin-top: auto;
@@ -880,7 +888,7 @@ body {
 }
 
 .work-detail-content .work-category {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 4cqw;
   color: #FFFF7D;
   margin: 0 0 2.6cqw 0;
@@ -907,7 +915,7 @@ body {
 
 .work-detail-info strong {
   color: #FFFFFF;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   display: inline-block;
   width: 16cqw;
   margin-right: 2.6cqw;
@@ -935,7 +943,7 @@ body {
   background-color: #FFFF7D;
   color: #000021;
   text-decoration: none;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 3.9cqw;
   font-weight: bold;
   transition: all 0.3s ease;
@@ -952,7 +960,7 @@ body {
   display: inline-block;
   color: #FFFFFF;
   text-decoration: none;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 3.4cqw;
   transition: color 0.3s ease;
   border-bottom: 2px solid transparent;
@@ -1138,8 +1146,7 @@ body {
 
 .content {
   filter: blur(15px);
-  transform: scale(1.05);
-  transition: filter 1s ease 3s, transform 1s ease 3s;
+  transition: filter 1s ease 3s;
 }
 
 .content.is-loaded {
@@ -1171,7 +1178,7 @@ body {
 
 #loading p {
   color: #FFFFFF;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
   font-size: 5vw;
   font-weight: bold;
   letter-spacing: 0.5vw;
@@ -1247,6 +1254,7 @@ body {
   .work-info,
   .work-item.small .work-info {
     padding: 6vw 8vw;
+    padding-top: 2vw;
   }
 
   .work-category {
@@ -1257,11 +1265,11 @@ body {
   .work-title,
   .work-item.small .work-title {
     font-size: 1.4rem;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
   }
 
   .work-desc {
-    font-size: 1rem;
+    font-size: 2.5vw;
     margin-bottom: 5vw;
   }
 
