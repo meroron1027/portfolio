@@ -115,7 +115,7 @@ if (container) {
     // Get initial size safely if container size isn't computed yet
     const initWidth = container.clientWidth || 300;
     const initHeight = container.clientHeight || 300;
-    
+
     const camera = new THREE.PerspectiveCamera(75, initWidth / initHeight, 0.1, 1000);
     camera.position.z = 6.2;
 
@@ -124,7 +124,7 @@ if (container) {
         antialias: true, // ギザギザを抑える
         alpha: true      // 背景を透明にできる
     });
-    
+
     renderer.setSize(initWidth, initHeight, false); // 第3引数にfalseを渡し、Three.jsによる強制的なstyle指定を防ぐ
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -217,7 +217,8 @@ targets.forEach(target => {
 });
 
 const canvas = document.getElementById('glitch-cursor');
-if (canvas) {
+// PC環境（画面幅768px超）でのみ実行
+if (canvas && window.innerWidth > 768) {
     const ctx = canvas.getContext('2d');
 
     let width, height;
