@@ -1241,10 +1241,6 @@ body {
   .contact-title {
     font-size: 18vw;
   }
-
-  .about-title {
-    font-size: 14vw;
-  }
 }
 
 /* =======================================
@@ -1259,18 +1255,19 @@ body {
     align-items: center;
   }
 
-  /* 大アイテムは横幅100%に対して正方形（1:1）を維持する */
+  /* 大アイテムは横幅100%に対して高さを自動調整し、重なりを防止 */
   .work-item {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
   }
 
-  /* 小アイテムは横幅80%に対して正方形（1:1）を維持する */
+  /* 小アイテムは横幅80%に対して高さを自動調整 */
   .work-item.small {
     width: 80vw;
     height: auto;
-    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+    /* アイテム同士の余白 */
   }
 
   /* 小アイテム群の先頭（3段目）のみ、上に20%（画面幅基準）の余白を設ける */
@@ -1295,14 +1292,20 @@ body {
     margin-bottom: 3vw;
   }
 
-  .work-title,
+  .work-title {
+    font-size: 6vw;
+    margin-bottom: 2vw;
+  }
+
   .work-item.small .work-title {
-    font-size: 1.4rem;
+    font-size: 5vw;
+    /* 小さい作例は2行にならないよう少し小さく */
     margin-bottom: 2vw;
   }
 
   .work-desc {
-    font-size: 2.5vw;
+    font-size: 3.5vw;
+    /* 説明文を少し大きくして見やすく */
     margin-bottom: 5vw;
   }
 
