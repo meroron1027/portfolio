@@ -394,6 +394,10 @@ body {
   z-index: 20;
 }
 
+.sp-br {
+  display: none;
+}
+
 /* =======================================
    スマホ用設定（最初から全開にする）
 ======================================= */
@@ -435,6 +439,21 @@ body {
    ABOUTエリア スマホ用設定 (固定背景＋テキストオーバーレイ)
 ====================================== */
 @media screen and (max-width: 768px) {
+  .sp-br {
+    display: block;
+  }
+
+  .about-title {
+    font-size: 20vw;
+    line-height: 0.9;
+    top: 5vw; /* 2行になったため少し位置を調整 */
+  }
+
+  .profile {
+    margin-top: 20vw; /* タイトルと被らないよう上部に大きめの余白 */
+    margin-bottom: 10vw; /* Q&Aとの間に余白 */
+  }
+
   .about {
     display: block;
     min-height: 100vh;
