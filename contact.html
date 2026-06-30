@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT - 高田龍弥 ポートフォリオサイト</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+
+<body>
+    <!--
+      ローディング画面とscript.jsは読み込まず、
+      通常のHTML+CSSとして最初からフォームを即時表示します。
+      style.cssで初期値として設定されているぼかし(blur)を無効化するため、
+      メインコンテナには 'content is-loaded' クラスを設定しています。
+    -->
+    <div class="content is-loaded">
+        <!-- ヘッダー追加でトンマナ統一 -->
+        <header class="site-header">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Logo" class="logo">
+            </a>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="index.html#">TOP</a></li>
+                    <li><a href="index.html#about">ABOUT</a></li>
+                    <li><a href="index.html#works">WORKS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div id="btn" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <main class="contact-page-section">
+            <div class="contact-form-box">
+                <div class="contact-page-title-wrapper js-observer fadein-left">
+                    <h1 class="contact-page-title">CONTACT</h1>
+                </div>
+
+                <!-- ポートフォリオに戻るリンク -->
+                <div class="back-link-wrapper">
+                    <a href="index.html" class="btn-back-link">← ポートフォリオに戻る</a>
+                </div>
+
+                <!-- 1. 入力画面 -->
+                <div id="step-input">
+                    <form id="contact-form" novalidate onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="name" class="form-label">NAME <span class="required">必須</span></label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="高田 龍弥">
+                            <p id="err-name" class="error-txt"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">MAIL ADDRESS <span class="required">必須</span></label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="example@email.com">
+                            <p id="err-email" class="error-txt"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">MESSAGE <span class="required">必須</span></label>
+                            <textarea id="message" name="message" class="form-control" placeholder="ご質問や制作のご依頼など、こちらにご記入ください。"></textarea>
+                            <p id="err-message" class="error-txt"></p>
+                        </div>
+
+                        <div class="form-actions center">
+                            <button type="button" id="btn-to-confirm" class="contact-btn">確認画面へ</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 2. 確認画面 -->
+                <div id="step-confirm" class="step-hidden">
+                    <div class="form-group">
+                        <p class="form-label">NAME</p>
+                        <div id="confirm-name" class="confirm-item"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="form-label">MAIL ADDRESS</p>
+                        <div id="confirm-email" class="confirm-item"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="form-label">MESSAGE</p>
+                        <div id="confirm-message" class="confirm-item"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="btn-back" class="contact-btn-outline">修正する</button>
+                        <button type="button" id="btn-submit" class="contact-btn">送信する</button>
+                    </div>
+                </div>
+
+                <!-- 3. 完了画面 -->
+                <div id="step-thanks" class="step-hidden">
+                    <div class="thanks-message">
+                        <h3>THANK YOU!</h3>
+                        <p>
+                            お問い合わせが送信されました。<br>
+                            確認メールをお送りしましたので、ご確認ください。<br>
+                            通常3営業日以内にご返信いたします。
+                        </p>
+                        <div class="form-actions center">
+                            <a href="index.html" class="contact-btn">TOPに戻る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- フッター -->
+        <footer class="site-footer">
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 TAKADA RYUYA. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Hamburger menu logic
+        const btn = document.getElementById('btn');
+        const nav = document.querySelector('.global-nav');
+        if (btn) {
+            btn.addEventListener('click', function () {
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    this.classList.add('close');
+                    nav.classList.remove('open');
+                } else {
+                    this.classList.remove('close');
+                    this.classList.add('active');
+                    nav.classList.add('open');
+                }
+            });
+        }
+
+        // Fade-in animation logic (IntersectionObserver)
+        const targets = document.querySelectorAll('.js-observer');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+        });
+        targets.forEach(target => {
+            observer.observe(target);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const stepInput = document.getElementById('step-input');
+            const stepConfirm = document.getElementById('step-confirm');
+            const stepThanks = document.getElementById('step-thanks');
+
+            const btnToConfirm = document.getElementById('btn-to-confirm');
+            const btnBack = document.getElementById('btn-back');
+            const btnSubmit = document.getElementById('btn-submit');
+
+            // 入力値取得用
+            const inputName = document.getElementById('name');
+            const inputEmail = document.getElementById('email');
+            const inputMessage = document.getElementById('message');
+
+            // 確認画面表示用
+            const confirmName = document.getElementById('confirm-name');
+            const confirmEmail = document.getElementById('confirm-email');
+            const confirmMessage = document.getElementById('confirm-message');
+
+            // エラー表示用
+            const errName = document.getElementById('err-name');
+            const errEmail = document.getElementById('err-email');
+            const errMessage = document.getElementById('err-message');
+
+            // メール形式の簡易チェック
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // 確認画面へ進む
+            btnToConfirm.addEventListener('click', () => {
+                let hasError = false;
+
+                // エラーテキストのリセット
+                errName.textContent = '';
+                errEmail.textContent = '';
+                errMessage.textContent = '';
+
+                if (!inputName.value.trim()) {
+                    errName.textContent = '▲ お名前を入力してください。';
+                    hasError = true;
+                }
+
+                if (!inputEmail.value.trim()) {
+                    errEmail.textContent = '▲ メールアドレスを入力してください。';
+                    hasError = true;
+                } else if (!validateEmail(inputEmail.value.trim())) {
+                    errEmail.textContent = '▲ メールアドレスの形式が正しくありません。';
+                    hasError = true;
+                }
+
+                if (!inputMessage.value.trim()) {
+                    errMessage.textContent = '▲ お問い合わせ内容を入力してください。';
+                    hasError = true;
+                }
+
+                if (hasError) return;
+
+                // 確認画面にテキストを設定
+                confirmName.textContent = inputName.value;
+                confirmEmail.textContent = inputEmail.value;
+                confirmMessage.textContent = inputMessage.value;
+
+                // 表示の切り替え
+                stepInput.style.display = 'none';
+                stepConfirm.style.display = 'block';
+
+                // スクロールをトップに戻す
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 入力画面へ戻る
+            btnBack.addEventListener('click', () => {
+                stepConfirm.style.display = 'none';
+                stepInput.style.display = 'block';
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // メールフォーム送信処理（Vercel Serverless Function）
+            btnSubmit.addEventListener('click', () => {
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = '送信中...';
+
+                fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: inputName.value,
+                        email: inputEmail.value,
+                        message: inputMessage.value
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        stepConfirm.style.display = 'none';
+                        stepThanks.style.display = 'block';
+                    } else {
+                        alert(data.error || '送信に失敗しました。');
+                        btnSubmit.disabled = false;
+                        btnSubmit.textContent = '送信する';
+                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                })
+                .catch(error => {
+                    console.error('送信エラー:', error);
+                    alert('通信エラーが発生しました。時間を置いてお試しください。');
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = '送信する';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

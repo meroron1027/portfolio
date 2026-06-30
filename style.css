@@ -12,6 +12,7 @@ body {
   padding: 0;
   font-family: 'Zen Kaku Gothic New', sans-serif;
   overflow-x: hidden;
+  background-color: #000021;
 }
 
 /* ヘッダー全体のスタイル */
@@ -1316,6 +1317,255 @@ body {
 
 .work-item.small.bg-alt {
   background-color: #212140;
+}
+
+/* お問い合わせフォーム専用スタイル */
+.contact-page-section {
+  padding: 260px 20px 80px;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.contact-page-title-wrapper {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.contact-page-title {
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 12vw;
+  color: #FFFFFF;
+  text-align: left;
+  position: absolute;
+  margin: 0;
+  top: -10px;
+  transform: translateY(-100%);
+  left: 20px;
+  z-index: 10;
+  font-weight: bold;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form-box {
+  background: rgba(0, 0, 33, 0.85);
+  border: 2px solid #FFFFFF;
+  padding: 40px;
+  position: relative;
+}
+
+.contact-form-box::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.form-label span.required {
+  background-color: #FFFF7D;
+  color: #000021;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  margin-left: 10px;
+  vertical-align: middle;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 15px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #FFFF7D;
+  background-color: rgba(255, 255, 125, 0.05);
+  box-shadow: 0 0 15px rgba(255, 255, 125, 0.25);
+}
+
+textarea.form-control {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.error-txt {
+  color: #FFFF7D;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.confirm-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 1rem;
+  word-break: break-all;
+  white-space: pre-wrap;
+  min-height: 24px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.form-actions.center {
+  justify-content: center;
+}
+
+button.contact-btn {
+  border: none;
+  cursor: pointer;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  margin-bottom: 0;
+}
+
+/* outline version of the contact-btn */
+.contact-btn-outline {
+  display: inline-block;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  padding: clamp(1rem, 3vw, 1.5rem) clamp(2rem, 6vw, 4rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  cursor: pointer;
+  text-align: center;
+}
+
+.contact-btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.btn-back-link {
+  display: inline-block;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.btn-back-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FFFF7D;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.btn-back-link:hover {
+  color: #FFFF7D;
+}
+
+.btn-back-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.back-link-wrapper {
+  text-align: left;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 15px;
+}
+
+.thanks-message {
+  text-align: center;
+  color: #FFFFFF;
+  padding: 40px 0;
+}
+
+.thanks-message h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #FFFF7D;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
+}
+
+.thanks-message p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.step-hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .contact-page-section {
+      padding-top: 180px;
+  }
+  .contact-page-title {
+      font-size: 18vw;
+      transform: translateY(-80%);
+      top: -10px;
+  }
+  .contact-form-box {
+      padding: 20px;
+  }
+  .form-actions {
+      flex-direction: column;
+  }
+  .contact-btn, .contact-btn-outline {
+      width: 100%;
+      min-width: unset;
+      margin-bottom: 20px;
+  }
 }
 
 /* デプロイテスト用 */

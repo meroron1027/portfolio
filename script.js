@@ -35,46 +35,52 @@ window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loading');
     const rotateContainer = document.getElementById('rotate-container')
     const mainContent = document.querySelector('.content');
-    //カメラ
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(400, 400);
-    rotateContainer.appendChild(renderer.domElement);
-    //ライト
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
-    scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-    directionalLight.position.set(5, 10, 7).normalize();
-    scene.add(directionalLight);
+    
+    if (rotateContainer) {
+        //カメラ
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(400, 400);
+        rotateContainer.appendChild(renderer.domElement);
+        //ライト
+        const ambientLight = new THREE.AmbientLight(0x404040, 2);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+        directionalLight.position.set(5, 10, 7).normalize();
+        scene.add(directionalLight);
 
-    camera.position.z = 7;
+        camera.position.z = 7;
 
-    const loader = new GLTFLoader();
-    let faceModel;
-    loader.load(
-        'img/myface.glb',
-        (gltf) => {
-            faceModel = gltf.scene;
-            faceModel.scale.set(1.5, 1.5, 1.5);
-            faceModel.rotation.y = THREE.MathUtils.degToRad(-45);
-            scene.add(faceModel);
-        },
-        (xhr) => { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
-        (error) => { console.error(error); }
-    );
-    function animate() {
-        requestAnimationFrame(animate);
+        const loader = new GLTFLoader();
+        let faceModel;
+        loader.load(
+            'img/myface.glb',
+            (gltf) => {
+                faceModel = gltf.scene;
+                faceModel.scale.set(1.5, 1.5, 1.5);
+                faceModel.rotation.y = THREE.MathUtils.degToRad(-45);
+                scene.add(faceModel);
+            },
+            (xhr) => { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+            (error) => { console.error(error); }
+        );
+        function animate() {
+            requestAnimationFrame(animate);
 
-        if (faceModel) {
+            if (faceModel) {
 
-            faceModel.rotation.y += 0.01;
+                faceModel.rotation.y += 0.01;
+            }
+            renderer.render(scene, camera);
         }
-        renderer.render(scene, camera);
-    }
 
-    animate();
-    mainContent.classList.add('is-loaded');
+        animate();
+    }
+    
+    if (mainContent) {
+        mainContent.classList.add('is-loaded');
+    }
 
     // レイアウト確定後にアスペクト比を再計算させるため、強制的にresizeイベントを発火
     setTimeout(() => {
