@@ -711,6 +711,14 @@ body {
   overflow: hidden;
 }
 
+/* <picture> を挟んでも img の height:100% が効くように、
+   ラッパー自体にサイズを持たせる */
+.work-thumbnail picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .work-thumbnail img {
   width: 100%;
   height: 100%;
