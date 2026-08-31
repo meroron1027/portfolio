@@ -12,6 +12,10 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- 3Dモデルとthree.jsを作品サムネイルより先に取りに行かせる -->
+    <link rel="preload" href="./vendor/three/three.module.js" as="script" crossorigin>
+    <link rel="preload" href="img/myface.glb" as="fetch" type="model/gltf-binary" crossorigin>
+
     <script type="importmap">
       {
         "imports": {
@@ -129,7 +133,7 @@
                 <!-- 作品1 -->
                 <a href="work1.html" class="work-item" style="text-decoration: none; color: inherit; display: block;">
                     <div class="work-thumbnail">
-                        <img src="img/work1.png" alt="Work 1">
+                        <img src="img/work1.png" alt="Work 1" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Web Design / Direction</p>
@@ -144,7 +148,7 @@
                 <!-- 作品2 -->
                 <a href="work2.html" style="text-decoration: none; color: inherit; display: block;" class="work-item">
                     <div class="work-thumbnail">
-                        <img src="img/work2.png" alt="Work 2">
+                        <img src="img/work2.png" alt="Work 2" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Game / Interactive</p>
@@ -162,7 +166,7 @@
                 <a href="work3.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work3.png" alt="Work 3">
+                        <img src="img/work3.png" alt="Work 3" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Short Movie / Direction</p>
@@ -176,7 +180,7 @@
                 <a href="work4.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work4.png" alt="Work 4">
+                        <img src="img/work4.png" alt="Work 4" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Rap / Music Video</p>
@@ -191,7 +195,7 @@
                 <a href="work5.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work5.png" alt="Work 5">
+                        <img src="img/work5.png" alt="Work 5" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV / Graffiti</p>
@@ -209,7 +213,7 @@
                 <a href="work6.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work6.png" alt="Work 6">
+                        <img src="img/work6.png" alt="Work 6" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Web App</p>
@@ -224,7 +228,7 @@
                 <a href="work7.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work7.png" alt="Work 7">
+                        <img src="img/work7.png" alt="Work 7" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV</p>
@@ -238,7 +242,7 @@
                 <a href="work8.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work8.png" alt="Work 8">
+                        <img src="img/work8.png" alt="Work 8" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Card Game</p>
@@ -257,7 +261,7 @@
                 <a href="work9.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work9.png" alt="Work 9">
+                        <img src="img/work9.png" alt="Work 9" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV</p>
@@ -272,7 +276,7 @@
                 <a href="work10.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work10.png" alt="Work 10">
+                        <img src="img/work10.png" alt="Work 10" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">VFX / MV</p>
@@ -286,7 +290,7 @@
                 <a href="work11.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work11.png" alt="Work 11">
+                        <img src="img/work11.png" alt="Work 11" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV</p>
@@ -303,7 +307,7 @@
                 <a href="work12.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work12.png" alt="Work 12">
+                        <img src="img/work12.png" alt="Work 12" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">Package Design</p>
@@ -317,7 +321,7 @@
                 <a href="work13.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work13.png" alt="Work 13">
+                        <img src="img/work13.png" alt="Work 13" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV</p>
@@ -332,7 +336,7 @@
                 <a href="work14.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work14.png" alt="Work 14">
+                        <img src="img/work14.png" alt="Work 14" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV</p>
@@ -350,7 +354,7 @@
                 <a href="work15.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work15.png" alt="Work 15">
+                        <img src="img/work15.png" alt="Work 15" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">RAP</p>
@@ -364,7 +368,7 @@
                 <a href="work16.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small bg-alt">
                     <div class="work-thumbnail">
-                        <img src="img/work16.png" alt="Work 16">
+                        <img src="img/work16.png" alt="Work 16" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">MV / Rap</p>
@@ -380,7 +384,7 @@
                 <a href="work17.html" style="text-decoration: none; color: inherit; display: block;"
                     class="work-item small">
                     <div class="work-thumbnail">
-                        <img src="img/work17.png" alt="Work 17">
+                        <img src="img/work17.png" alt="Work 17" loading="lazy" decoding="async">
                     </div>
                     <div class="work-info">
                         <p class="work-category">-</p>

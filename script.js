@@ -1,6 +1,10 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+// 同じ myface.glb を2箇所（ローディング画面と ABOUT）で読むので、
+// キャッシュを有効にして2重ダウンロードを避ける
+THREE.Cache.enabled = true;
+
 console.log("JavaScript is loaded.");
 
 window.addEventListener('load', function () {
@@ -24,10 +28,16 @@ const navLinks = document.querySelectorAll('.global-nav a');
 
 window.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loading');
+    const mainContent = document.querySelector('.content');
 
     // 3000ミリ秒（3秒）後に実行
+    // ぼかしの解除もここで行う。load を待つと、作品サムネイルや動画の
+    // ダウンロードが終わるまでぼけたままになるため
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
+        if (mainContent) {
+            mainContent.classList.add('is-loaded');
+        }
     }, 3000);
 });
 
